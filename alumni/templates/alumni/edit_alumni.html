@@ -1,0 +1,88 @@
+{% extends 'b.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Edit Alumni</h2>
+    <form method="post" action="{% url 'alumni:edit_alumni' school_id=school.id alumni_id=alumni.id %}">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="{{ form.alumni_collection.id_for_label }}">Alumni Collection:</label>
+                    {{ form.alumni_collection }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.name.id_for_label }}">Name:</label>
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.birthday.id_for_label }}">Birthday:</label>
+                    {{ form.birthday }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.graduate_year.id_for_label }}">Graduate Year:</label>
+                    {{ form.graduate_year }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.school.id_for_label }}">School:</label>
+                    {{ form.school }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="{{ form.location.id_for_label }}">Location:</label>
+                    {{ form.location }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.education_info.id_for_label }}">Education Info:</label>
+                    {{ form.education_info }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.current_job.id_for_label }}">Current Job:</label>
+                    {{ form.current_job }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.notes.id_for_label }}">Notes:</label>
+                    {{ form.notes }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.GBT.id_for_label }}">GBT:</label>
+                    {{ form.GBT }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.interaction_status.id_for_label }}">Interaction Status:</label>
+                    {{ form.interaction_status }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.description.id_for_label }}">Description:</label>
+                    {{ form.description }}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.military_status.id_for_label }}">Military Status:</label>
+            {{ form.military_status }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+            {{ form.phone_number }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.marital_status.id_for_label }}">Marital Status:</label>
+            {{ form.marital_status }}
+        </div>
+
+        <hr>
+
+        <div class="form-row mt-3">
+            <div class="form-group col-md-3">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </form>
+    
+</div>
+{% endblock content %}

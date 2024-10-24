@@ -1,0 +1,22 @@
+<!-- templates/alumni/add_alumni_collection.html -->
+{% extends 'b.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Alumni Collection</title>
+</head>
+<body>
+    <h1>Add Alumni Collection</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.year }}
+        <br>
+        <button type="submit">Save Alumni Collection</button>
+    </form>
+    <a href="{% url 'alumni:school_detail' school.id %}" class="btn btn-secondary mt-3">Back to School Detail</a>
+</body>
+</html>
+{% endblock content %}

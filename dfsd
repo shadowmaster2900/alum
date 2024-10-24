@@ -1,0 +1,227 @@
+[33mcommit 93cd18ebf39a0239fcca3809ec28539cb5a68f7d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31mheroku/master[m[33m, [m[1;31mheroku/HEAD[m[33m)[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Sat May 11 12:49:35 2024 -0700
+
+    updating the import and export for them
+
+[33mcommit d542b8de00884dde24d639f572c8724b4d8b0d51[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Thu May 9 20:19:18 2024 -0700
+
+    fixed nothing but had to push settings changes
+
+[33mcommit b0e494535cb6d03cf83bcc139f1eb07d96ce727c[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Mon May 6 19:55:31 2024 -0700
+
+    fixed the import/export with new fields such as city, major and class
+
+[33mcommit 8eca3fa52a2338ac816ae5388d777aead4f0c470[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Tue Apr 30 17:37:43 2024 -0700
+
+    added major to the thing
+
+[33mcommit ac2ba09dcfb7e9aa5a454d504a989072a40b5d9a[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Sun Apr 28 09:06:01 2024 -0700
+
+    replaced phone number field with city field and also added classes attribute to the alumni so like alumni can be from class A or a different one can be from class B
+
+[33mcommit 6653b5a8274f7a60e4a1dfe48bfd5afeeab6a7e7[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Fri Apr 26 15:49:28 2024 -0700
+
+    adding another IP to whitelist
+
+[33mcommit 3cde586e47690a6ca5525a700e2535428c158669[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Mon Apr 8 19:41:22 2024 -0700
+
+    whitelisted more IPs
+
+[33mcommit c2b5dd9a82627222d2d573fed300f00b867450bf[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Wed Apr 3 11:45:45 2024 -0700
+
+    forgot one last change to show the version number
+
+[33mcommit 26aa8cf8137f167e12662ab9b7aefe0eb7358f55[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Wed Apr 3 11:43:24 2024 -0700
+
+    adding version control
+
+[33mcommit 519bbe8934d5507a045b8caedb4e158c2b954051[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Wed Apr 3 10:51:28 2024 -0700
+
+    fixing the http redirect to https
+
+[33mcommit d3adc3c275517c89fdecbeacc0d5331bf701b323[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Wed Apr 3 10:42:41 2024 -0700
+
+    updating the database
+
+[33mcommit cafcf1ba252561c5fc806d140de82854c868ab32[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Wed Apr 3 10:24:55 2024 -0700
+
+    trying to fix the error with datetime
+
+[33mcommit bee657fbddcf6b10a26d7aab94c6f43fb7636f1b[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Wed Apr 3 10:18:55 2024 -0700
+
+    ading database as well
+
+[33mcommit e23563c58e3086cd15d89371285197536589371a[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Wed Apr 3 10:14:04 2024 -0700
+
+    trying to solve the datetime add alumni error
+
+[33mcommit b48c69de0817e42d983dea1f5c6528135075621e[m
+Author: javabal <geldiyevab@gmail.com>
+Date:   Wed Apr 3 10:06:16 2024 -0700
+
+    fixing the date attribute for when alumni is added
+
+[33mcommit b8bf0f613eec3f0c40eb732871c41a71089e6c15[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Tue Apr 2 21:42:58 2024 -0700
+
+    fixing the qrcode for SuperAdmin
+
+[33mcommit 64b227d65a8df5e489bd9040b80459939d9e4f99[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Fri Mar 29 16:56:36 2024 -0700
+
+    unsaved changes for 2fa part3
+
+[33mcommit bb46cb0e848857b3fed29687f553aff6a7c33724[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Fri Mar 29 16:55:43 2024 -0700
+
+    unsaved changes for 2fa part2
+
+[33mcommit a979d877b79f04ceb5ed443a86e3de9461018da5[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Fri Mar 29 16:51:20 2024 -0700
+
+    unsaved changes for 2fa
+
+[33mcommit bdcd19bec0b286f8dfacce5899eb445a078178d8[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Fri Mar 29 16:47:42 2024 -0700
+
+    PROVISIONAL 2FA implementation. documentation not yet updated
+
+[33mcommit e51d5a9691b98db726c20275ce07079189dc1c28[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Sun Mar 24 10:36:06 2024 -0700
+
+    add our ip to whitelist as well
+
+[33mcommit d443e2c45649dc99bfb9aa385c462244e4bbbe25[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Sun Mar 24 10:33:59 2024 -0700
+
+    updated whitelisted IP address list
+
+[33mcommit 3a16f5dfaa75ac3c1b3ffe0fdc0ca480d50acbe7[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Sun Mar 24 10:29:42 2024 -0700
+
+    forgot the admin ip middleware updated that too
+
+[33mcommit 8b972f1a2c06497ec0ff3ddcdf1ebb9a46489ac4[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Sun Mar 24 10:06:06 2024 -0700
+
+    retrying whitelisting again
+
+[33mcommit 5560ffa78960c2914ade46b0f6185201ce91edd4[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Sun Mar 24 10:05:03 2024 -0700
+
+    retrying whitelisting
+
+[33mcommit dbb28b5eb8ab762f2616bb85c7378df4cb439748[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Thu Mar 21 17:19:33 2024 -0700
+
+    implemented IP whitelisting
+
+[33mcommit 892122d5f1a01354ac5376db1f40de638019f6ec[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Sun Mar 17 17:02:11 2024 -0700
+
+    ip whitelist to tests
+
+[33mcommit a90d9518d48c70d287f3c8617dec94b27548286b[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Sun Mar 17 16:53:42 2024 -0700
+
+    ip whitelist to test
+
+[33mcommit 83a9aa405f374ccb2125d6bf8b28dffd67adca91[m
+Author: MGeldiy <nighgtwolf@gmail.com>
+Date:   Sun Mar 17 16:46:27 2024 -0700
+
+    ip whitelist
+
+[33mcommit 9e7965f1ecd0c37ecaf089303e3460b428bfbb09[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Sun Mar 17 13:03:36 2024 -0700
+
+    fixed the add track record back to alumni collection detail button because it was giving an error
+
+[33mcommit cb2303fc862bbb9b77dd6c0b9c1c353968ddf5fa[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Thu Mar 14 23:38:25 2024 -0700
+
+    The seventh
+
+[33mcommit 0493c9bf09f0947544f2d067129c23a0d6859516[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Thu Mar 14 23:21:31 2024 -0700
+
+    The sixth time
+
+[33mcommit 868a23e992ae6afd844869b74da1cefc1264f55c[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Thu Mar 14 23:18:02 2024 -0700
+
+    The fifth times
+
+[33mcommit 423f57d0e4eeb1103b79e41e0502e4c6a3196946[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Thu Mar 14 23:15:17 2024 -0700
+
+    The fifth time
+
+[33mcommit f9320673d3e8b3e6efa8e8af89c2006104eb7339[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Thu Mar 14 23:12:14 2024 -0700
+
+    The FOURTH time
+
+[33mcommit eadca933f2ba68b117f68e4cbc34fa90b7bc0ad2[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Thu Mar 14 23:10:48 2024 -0700
+
+    The THIRD time
+
+[33mcommit 2f30930bfd9f6b22fc5ac0c616a0534bb261bb1b[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Thu Mar 14 23:09:51 2024 -0700
+
+    The second time
+
+[33mcommit 4c4ae5b807e9035a1e61b50e2cd40ef792cd82f2[m
+Author: Mark Smith <brodienaw@gmail.com>
+Date:   Thu Mar 14 23:07:58 2024 -0700
+
+    The first time

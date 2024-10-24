@@ -1,0 +1,21 @@
+<!-- alumni/templates/alumni/delete_alumni_collection.html -->
+{% extends 'b.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Alumni Collection</title>
+</head>
+<body>
+    <h1>Delete Alumni Collection</h1>
+    <p>Are you sure you want to delete this alumni collection?</p>
+    <p>Name: {{ collection.name }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Yes, Delete</button>
+    </form>
+    <a href="{% url 'alumni:school_detail' school_id=school.id %}" class="btn btn-secondary mt-3">Cancel</a>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,361 @@
+<!-- templates/alumni/school_detail.html -->
+{% extends 'b.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Detail</title>
+    <style>
+        /* Add your CSS for the context menu here */
+        .column-visibility-menu {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 100;
+            display: none;
+        }
+        /* Add CSS for the live search input fields */
+        .column-search {
+            margin-bottom: 10px;
+            width: 80px;
+        }
+        /* Add your CSS for table styling here */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Make the table header fixed */
+        thead th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: #f2f2f2;
+        }
+
+        /* Make the table scrollable */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        .centered-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>School Detail: {{ school.name }}</h1>
+
+    <!-- Display Alumni Collections -->
+    <!-- alumni/templates/alumni/school_detail.html -->
+
+<!-- ... other content ... -->
+{% if alumnis_for_first_page %}
+<button id="toggleMenuButton" class="btn btn-secondary mt-3">Toggle Menu</button>
+<a href="{% url 'alumni:add_alumni' school.id %}" class="btn btn-secondary mt-3">Add Alumni</a>
+<a href="{% url 'alumni:add_alumni_collection' school_id=school.id %}" class="btn btn-secondary mt-3">Add Alumni Collection</a>
+<a href="{% url 'alumni:import_alumni' %}" class="btn btn-secondary mt-3">Import Data</a>
+<a href="{% url 'alumni:export_alumni' school_id=school.id %}" class="btn btn-secondary mt-3">Export Data</a>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th data-column="name">Name 
+                                                <input type="text" id="searchName" class="column-search" data-column="name">
+                                            </th>
+                                            <th data-column="graduate-year">Graduate Year
+                                                <input type="text" id="searchName" class="column-search" data-column="graduate-year">
+                                            </th>
+                                            <th data-column="school">School 
+                                                <input type="text" id="searchName" class="column-search" data-column="school">
+                                            </th>
+                                            <th data-column="class_number">Class 
+                                                <input type="text" id="searchName" class="column-search" data-column="class_number">
+                                            </th>
+                                            <th data-column="major">Major 
+                                                <input type="text" id="searchName" class="column-search" data-column="class_number">
+                                            </th>
+                                            <th data-column="birthday">Birthday
+                                                <input type="text" id="searchName" class="column-search" data-column="birthday">
+                                            </th>
+                                            <th data-column="city">City
+                                                <input type="text" id="searchName" class="column-search" data-column="city">
+                                            </th>  
+                                            <th data-column="location">Location
+                                                <input type="text" id="searchName" class="column-search" data-column="location">
+                                            </th>
+                                            <th data-column="education">Education <br>
+                                                <input type="text" id="searchName" class="column-search" data-column="education">
+                                            </th>
+                                            <th data-column="description">Description <br>
+                                                <input type="text" id="searchName" class="column-search" data-column="description">
+                                            </th>
+                                            <th data-column="education">GBT <br>
+                                                <input type="text" id="searchName" class="column-search" data-column="gbt">
+                                            </th>
+                                            <th data-column="education">Interaction Status <br>
+                                                <input type="text" id="searchName" class="column-search" data-column="interaction_status">
+                                            </th>
+                                            <th data-column="current-job">Current Job
+                                                <input type="text" id="searchName" class="column-search" data-column="current-job">
+                                            </th>
+                                            <th data-column="military">Military
+                                                <input type="text" id="searchName" class="column-search" data-column="military">
+                                            </th>
+                                            <th data-column="marital">Marital
+                                                <input type="text" id="searchName" class="column-search" data-column="marital">
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Save</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Details</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for alumnus in alumnis_for_first_page %}
+                                            <tr role="row" class="odd">
+                                                <td data-column="name" id="name" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.name }} </td>
+                                                <td data-column="graduate-year" id="graduateYear" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.graduate_year }}</td>
+                                                <td data-column="school" id="school" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.school }}</td>
+                                                <td data-column="class_number" id="class_number" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.class_number }}</td>
+                                                <td data-column="major" id="major" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.major }}</td>
+                                                <td data-column="birthday" id="birthday" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.birthday }}</td>
+                                                <td data-column="city" id="city" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.city }}</td>
+                                                <td data-column="location" id="location" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.location }}</td>
+                                                <td data-column="education" id="education" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.education_info }}</td>
+                                                <td data-column="description" id="description" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.description }}</td>
+                                                <td data-column="gbt" id="gbt" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.GBT }}</td>
+                                                <td data-column="interaction_status" id="interaction_status" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.interaction_status }}</td>
+                                                <td data-column="current-job" id="currentJob" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.current_job }}</td>
+                                                <td data-column="military" id="militaryStatus" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.military_status }}</td>
+                                                <td data-column="marital" id="maritalStatus" class="editable" data-alumni-id="{{ alumnus.id }}" contenteditable="true">{{ alumnus.marital_status }}</td>
+                                                <td><button type="button" class="save-button" data-alumni-id="{{ alumnus.id }}">Save</button></td>
+                                                <td><a href="{% url 'alumni:view_alumni' alumni_id=alumnus.id %}">View more Details</a></td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="centered-text">
+    <h2>Number of alumni: {{ alumni_count }}</h2>
+</div>
+{% else %}
+<h2>No alumni have been added to this school yet.</h2>
+<a href="{% url 'alumni:add_alumni' school.id %}" class="btn btn-secondary mt-3">Add Alumni</a>
+<a href="{% url 'alumni:add_alumni_collection' school_id=school.id %}" class="btn btn-secondary mt-3">Add Alumni Collection</a>
+<a href="{% url 'alumni:import_alumni' %}" class="btn btn-secondary mt-3">Import Data</a>
+
+{% endif %}
+    <!-- Add the column visibility context menu here -->
+    <div id="column-visibility-menu" class="column-visibility-menu">
+        <label><input type="checkbox" class="toggle-column" data-column="name" checked> Name</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="graduate-year" checked> Graduate Year</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="school" checked> School</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="class_number" checked> Class</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="major" checked> Major</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="birthday" checked> Birthday</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="city" checked> City</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="location" checked> Location</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="education" checked> Education</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="description" checked> Description</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="gbt" checked> GBT</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="interaction_status" checked> Interaction Status</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="current-job" checked> Current Job</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="military" checked> Military</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="marital" checked> Marital</label><br>
+    </div>
+    
+<!-- JavaScript for column visibility functionality -->
+<script>
+    const csrfToken = "{{ csrf_token }}";
+    const schoolId = "{{ school.id }}";
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const saveButtons = document.querySelectorAll(".save-button");
+    
+        saveButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                const alumniId = button.getAttribute("data-alumni-id");
+                const class_number = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="class_number"]`).textContent.trim();
+                const name = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="name"]`).textContent.trim();
+                const graduateYearElement = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="graduate-year"]`);
+                const graduateYearText = graduateYearElement ? graduateYearElement.textContent.trim() : '';
+                const graduateYear = Number.isNaN(parseInt(graduateYearText)) ? 0 : parseInt(graduateYearText);
+                const birthday = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="birthday"]`).textContent.trim();
+                const city = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="city"]`).textContent.trim();
+                const major = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="major"]`).textContent.trim();
+                const location = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="location"]`).textContent.trim();
+                const education = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="education"]`).textContent.trim();
+                const description = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="description"]`).textContent.trim();
+                const gbt = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="gbt"]`).textContent.trim();
+                const interaction_status = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="interaction_status"]`).textContent.trim();
+                const currentJob = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="current-job"]`).textContent.trim();
+                const militaryStatus = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="military"]`).textContent.trim();
+                const maritalStatus = document.querySelector(`[data-alumni-id="${alumniId}"][data-column="marital"]`).textContent.trim();
+    
+
+                const formattedBirthday = new Date(birthday).toISOString().split('T')[0];
+                // ... add more lines for other fields
+    
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", `/alumni/alumni_collections/${schoolId}/edit_alumni/${alumniId}/`, true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                xhr.setRequestHeader("X-CSRFToken", csrfToken);
+                xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        console.log("Alumni details updated successfully");
+                    } else {
+                        console.error("Error updating alumni details");
+                    }
+                };
+    
+                const data = {
+                    name: name,
+                    graduate_year: graduateYear,
+                    birthday: formattedBirthday,
+                    city: city,
+                    location: location,
+                    education: education,
+                    description: description,
+                    gbt: gbt,
+                    interaction_status: interaction_status,
+                    current_job: currentJob,
+                    military_status: militaryStatus,
+                    marital_status: maritalStatus,
+                    class_number: class_number,
+                    major: major,
+                    // ... add more fields as needed
+                };
+    
+                xhr.send(JSON.stringify(data));
+            });
+        });
+    });
+    
+</script>
+
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("toggleMenuButton");
+        const columnVisibilityMenu = document.getElementById("column-visibility-menu");
+
+        // Show/hide the column visibility menu when the button is clicked
+        toggleButton.addEventListener("click", function (event) {
+            const buttonRect = event.target.getBoundingClientRect();
+            columnVisibilityMenu.style.left = buttonRect.left + "px";
+            columnVisibilityMenu.style.top = buttonRect.bottom + "px";
+            columnVisibilityMenu.style.display = columnVisibilityMenu.style.display === "block" ? "none" : "block";
+
+            toggleColumns.forEach((checkbox) => {
+                checkbox.dispatchEvent(new Event("change"));
+            });
+            event.stopPropagation();
+        });
+        const toggleColumns = document.querySelectorAll(".toggle-column");
+        toggleColumns.forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+                const column = checkbox.dataset.column;
+                const columnElements = document.querySelectorAll(`[data-column="${column}"]`);
+                columnElements.forEach((element) => {
+                    element.style.display = checkbox.checked ? "table-cell" : "none";
+                });
+            });
+        });
+                // Function to check all checkboxes in the context menu
+        function checkAllCheckboxes() {
+            const checkboxes = document.querySelectorAll('.toggle-column');
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = true;
+            });
+        }
+
+        // Call the function when the page loads
+        window.addEventListener('load', checkAllCheckboxes);
+
+        function filterTable() {
+            var filters = {};
+        
+            // Collect values from input fields
+            $('.column-search').each(function () {
+                filters[$(this).data('column')] = $(this).val().toLowerCase();
+            });
+        
+            // Filter rows based on input values
+            $('#sampleTable tbody tr').each(function () {
+                var row = $(this);
+        
+                var showRow = true;
+                $.each(filters, function (column, value) {
+                    if (value) {
+                        // Split the input value by commas
+                        var filterValues = value.split(',').map(v => v.trim());
+                        var cellValue = row.find(`[data-column="${column}"]`).text().toLowerCase();
+        
+                        // Check if any of the filter values match the cell value
+                        if (!filterValues.some(filter => cellValue.includes(filter))) {
+                            showRow = false;
+                            return false; // Break out of the loop
+                        }
+                    }
+                });
+        
+                // Show or hide the row based on filtering
+                row.toggle(showRow);
+            });
+        }
+
+        // Attach event listeners to input fields
+        $('.column-search').on('input', filterTable);
+        });
+</script>
+
+<!-- ... other content ... -->
+
+
+</body>
+</html>
+{% endblock content %}

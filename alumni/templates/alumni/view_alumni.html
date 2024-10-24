@@ -1,0 +1,62 @@
+<!-- alumni/templates/alumni/view_alumni.html -->
+{% extends 'b.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alumni Detail</title>
+</head>
+<body>
+    <h1>Alumni Detail: {{ alumnus.name }}</h1>
+    <p>Birthday: {{ alumnus.birthday }}</p>
+    <p>Graduate Year: {{ alumnus.graduate_year }}</p>
+    <p>School: {{ alumnus.school }}</p>
+    <p>Class : {{ alumnus.class_number }}</p>
+    <p>Major: {{ alumnus.major }}</p>
+    <p>City: {{ alumnus.city }}</p>
+    <p>Location: {{ alumnus.location }}</p>
+    <p>Education Degree/Info: {{ alumnus.education_info }}</p>
+    <p>Current Job: {{ alumnus.current_job }}</p>
+    <p>Description: {{ alumnus.description }}</p>
+    <p>GBT: {{ alumnus.GBT }}</p>
+    <p>Interaction Status: {{ alumnus.interaction_status }}</p>
+    <p>Military Status: {{ alumnus.military_status }}</p>
+    <p>Marital Status: {{ alumnus.marital_status }}</p>
+
+    <h2>Track Records:</h2>
+    {% if alumnus.track_records.all.exists %}
+        <table>
+            <tr>
+
+            </tr>
+            {% for record in alumnus.track_records.all|dictsortreversed:"date" %}
+            <tr>
+                <td>{{ record.date }}</td>
+                <td>{{ record.record }}</td>
+                <td>
+                    <a href="{% url 'alumni:delete_track_record' school_id=alumnus.alumni_collection.school.id alumni_id=alumnus.id record_id=record.id %}" class="btn btn-secondary mt-3">Delete</a>
+                </td>
+                <td>
+                    <a href="{% url 'alumni:edit_track_record' school_id=alumnus.alumni_collection.school.id alumni_id=alumnus.id record_id=record.id %}" class="btn btn-secondary mt-3">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h5>No Track Records Have Been Added</h5>
+    {% endif %}
+    
+    <h2>Add Track Record:</h2>
+    <form method="post" action="{% url 'alumni:add_track_record' school_id=alumnus.alumni_collection.school.id alumni_id=alumnus.id %}">
+        {% csrf_token %}
+        {{ track_record_form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Track Record</button>
+    </form>
+
+    
+
+    <a href="{% url 'alumni:school_detail' alumnus.alumni_collection.school.id %}" class="btn btn-secondary mt-3">Back to School</a>
+</body>
+</html>
+{% endblock content %}

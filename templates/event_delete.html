@@ -1,0 +1,18 @@
+<!-- templates/article_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete School</title>
+</head>
+<body>
+    <form method="post">{% csrf_token %}
+        <p>Are you sure you want to delete "{{ event }}"?</p>
+        {{ form }}
+        <input type="submit" value="Confirm">
+    </form>
+</body>
+</html>
+{% endblock content %}

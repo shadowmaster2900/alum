@@ -1,0 +1,14 @@
+/* Add this CSS class to make the red dot visible */
+.has-notifications .notification-dot {
+    display: block;
+}
+
+/* Add this CSS class to style the bell icon when there are unread notifications */
+.has-notifications .fa-bell {
+    color: red;
+}
+
+/* Add this CSS class to hide the red dot when there are no unread notifications */
+.no-notifications .notification-dot {
+    display: none;
+}

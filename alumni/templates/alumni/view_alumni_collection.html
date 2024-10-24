@@ -1,0 +1,148 @@
+<!-- templates/alumni/view_alumni_collection.html -->
+{% extends 'b.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alumni Collection Detail</title>
+    <style>
+        /* Add your CSS for the context menu here */
+        .column-visibility-menu {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 100;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h1>Alumni Collection Detail: {{ collection.name }}
+        <a href="{% url 'alumni:add_alumni' %}" class="btn btn-secondary mt-3">Add Alumni</a>  
+        <a href="{% url 'alumni:school_detail' collection.school.id %}" class="btn btn-secondary mt-3">Back to School Detail</a>
+        <button id="toggleMenuButton" class="btn btn-secondary mt-3">Toggle Menu</button>
+    </h1>
+
+    {% if alumni.exists %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <div class="table-responsive">
+                        <div id="sampleTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th data-column="name">Name</th>
+                                                <th data-column="graduate-year">Graduate Year</th>
+                                                <th data-column="school">School</th>
+                                                <th data-column="birthday">Birthday</th> 
+                                                <th data-column="city">City</th>    
+                                                <th data-column="location">Location</th>
+                                                <th data-column="education">Education</th>
+                                                <th data-column="gbt">GBT</th>
+                                                <th data-column="interaction-status">Interaction Status</th>
+                                                <th data-column="current-job">Current Job</th>
+                                                <th data-column="military">Military</th>
+                                                <th data-column="marital">Marital</th>
+                                                <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for alumnus in alumni %}
+                                                <tr role="row" class="odd">
+                                                    <td data-column="name">{{ alumnus.name }}</td>
+                                                    <td data-column="graduate-year">{{ alumnus.graduate_year }}</td>
+                                                    <td data-column="school">{{ alumnus.school }}</td>
+                                                    <td data-column="birthday">{{ alumnus.birthday }}</td>
+                                                    <td data-column="city">{{ alumnus.city }}</td>
+                                                    <td data-column="location">{{ alumnus.location }}</td>
+                                                    <td data-column="education">{{ alumnus.education_info }}</td>
+                                                    <td data-column="gbt">{{ alumnus.GBT }}</td>
+                                                    <td data-column="interaction-status">{{ alumnus.interaction_status }}</td>
+                                                    <td data-column="current-job">{{ alumnus.current_job }}</td>
+                                                    <td data-column="military">{{ alumnus.military_status }}</td>
+                                                    <td data-column="marital">{{ alumnus.marital_status }}</td>
+                                                    <td><a href="{% url 'alumni:view_alumni' alumni_id=alumnus.id %}">View more Details</a></td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- Add the button inside your HTML body -->
+
+
+    
+    <!-- Add the column visibility context menu here -->
+    <div id="column-visibility-menu" class="column-visibility-menu">
+        <label><input type="checkbox" class="toggle-column" data-column="name" checked> Name</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="graduate-year" checked> Graduate Year</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="school" checked> School</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="birthday" checked> Birthday</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="city" checked> City</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="location" checked> Location</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="education" checked> Education</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="gbt" checked> GBT</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="interaction-status" checked> Interaction Status</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="military" checked> Military</label><br>
+        <label><input type="checkbox" class="toggle-column" data-column="marital" checked> Marital</label><br>
+    </div>
+    
+<!-- JavaScript for column visibility functionality -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("toggleMenuButton");
+        const columnVisibilityMenu = document.getElementById("column-visibility-menu");
+
+        // Show/hide the column visibility menu when the button is clicked
+        toggleButton.addEventListener("click", function (event) {
+            const buttonRect = event.target.getBoundingClientRect();
+            columnVisibilityMenu.style.left = buttonRect.left + "px";
+            columnVisibilityMenu.style.top = buttonRect.bottom + "px";
+            columnVisibilityMenu.style.display = columnVisibilityMenu.style.display === "block" ? "none" : "block";
+
+            toggleColumns.forEach((checkbox) => {
+                checkbox.dispatchEvent(new Event("change"));
+            });
+            event.stopPropagation();
+        });
+        const toggleColumns = document.querySelectorAll(".toggle-column");
+        toggleColumns.forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+                const column = checkbox.dataset.column;
+                const columnElements = document.querySelectorAll(`[data-column="${column}"]`);
+                columnElements.forEach((element) => {
+                    element.style.display = checkbox.checked ? "table-cell" : "none";
+                });
+            });
+        });
+                // Function to check all checkboxes in the context menu
+        function checkAllCheckboxes() {
+            const checkboxes = document.querySelectorAll('.toggle-column');
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = true;
+            });
+        }
+
+        // Call the function when the page loads
+        window.addEventListener('load', checkAllCheckboxes);
+        });
+</script>
+
+</body>
+</html>
+{% endblock content %}

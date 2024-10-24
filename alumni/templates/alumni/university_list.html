@@ -1,0 +1,43 @@
+{% extends 'b.html' %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <h1>Universities</h1>
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>School Name</th>
+                                <th>Location</th>
+                                <th>More Info</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for university in universities %}
+                                <tr>
+                                    <td>{{ university.name }}</td>
+                                    <td>{{ university.location }}</td>
+                                    <td><a href="{{ university.link_to_admissions }}" target="_blank">
+                                        More Info
+                                    </a></td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="3">No schools have been added.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+{% endblock %}

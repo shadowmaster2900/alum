@@ -1,0 +1,10 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div class="module">
+    <h2>Birthday Emails</h2>
+    <p>Send birthday emails to alumni with birthdays today.</p>
+    <a href="{% url 'send_birthday_emails' %}" class="button">Send Birthday Emails</a>
+</div>
+{{ block.super }}
+{% endblock %}

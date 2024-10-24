@@ -1,0 +1,19 @@
+<!-- templates/alumni/delete_school.html -->
+{% extends 'b.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete School</title>
+</head>
+<body>
+    <h1>Delete School</h1>
+    <p>Are you sure you want to delete {{ school.name }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+</body>
+</html>
+{% endblock content %}

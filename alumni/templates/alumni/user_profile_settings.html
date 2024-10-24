@@ -1,0 +1,10 @@
+<!-- user_profile_settings.html -->
+{% extends 'b.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Settings</button>
+</form>
+{% endblock %}

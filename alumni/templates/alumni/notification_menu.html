@@ -1,0 +1,12 @@
+<ul id="notification-dropdown" class="notification-menu">
+    {% if notifications %}
+        {% for notification in notifications %}
+            <li data-notification-id="{{ notification.id }}">
+                {{ notification.message }}
+                <a class="mark-as-read-link" href="#">Mark as Read</a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li>No new notifications</li>
+    {% endif %}
+</ul>

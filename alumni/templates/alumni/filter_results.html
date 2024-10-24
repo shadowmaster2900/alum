@@ -1,0 +1,17 @@
+{% extends 'b.html' %}
+
+{% block content %}
+<!-- alumni/filter_results.html -->
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary">Filter</button>
+</form>
+
+<ul>
+    {% for alum in alumni %}
+        <li>{{ alum.name }} - {{ alum.graduate_year }} - {{ alum.alumni_collection.school }}</li>
+    {% empty %}
+        <li>No results found.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
