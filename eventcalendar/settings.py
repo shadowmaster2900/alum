@@ -59,7 +59,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "middleware.admin_ip_middleware.AdminIPMiddleware",
     'django_otp.middleware.OTPMiddleware',
 ]
 
@@ -155,12 +154,6 @@ LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'dashboard'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'meklek20@gmail.com'
-EMAIL_HOST_PASSWORD = 'gdmh lgbb aejy sspv'
 
 
 LOGGING = {
@@ -181,4 +174,3 @@ LOGGING = {
 
 # in settings.py
 #SECURE_SSL_REDIRECT = True
-django_heroku.settings(locals())

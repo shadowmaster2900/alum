@@ -15,13 +15,6 @@ from alumni.utils import generate_notifications_for_upcoming_events
 
 import eventcalendar
 
-ALLOWED_IPS = list(IPWhiteList.objects.values_list('ip_address', flat=True)) + [
-            "127.0.0.1", "104.12.136.249", '87.208.43.160','164.68.122.101', 
-            '73.154.43.139', '93.125.107.20', '84.241.196.145', 
-            '84.241.201.175', '144.91.119.150', '67.172.58.14', 
-            '93.125.107.23', '3.67.6.29'
-        ]
-#ALLOWED_IPS = []
 class SignInView(View):
     """ User registration view """
 
@@ -29,19 +22,6 @@ class SignInView(View):
     form_class = SignInForm
 
 
-    def dispatch(self, request, *args, **kwargs):
-        # Get the user's IP address
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            user_ip = x_forwarded_for.split(',')[0]
-        else:
-            user_ip = request.META.get('REMOTE_ADDR')
-        
-        print(f"HERE IS THE USER'S IP: {user_ip}")
-        
-        # Check if the user's IP is whitelisted
-    
-        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         forms = self.form_class()

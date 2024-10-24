@@ -25,6 +25,5 @@ urlpatterns = [
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("", include("calendarapp.urls")),
     path("", include("alumni.urls")),
-    path('auth/', include('social_django.urls', namespace='social')),
 ]
 admin.site.site_header  =  "ALUMNI Admin v1.2"  
